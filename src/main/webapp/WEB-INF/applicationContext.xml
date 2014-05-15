@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    <context:component-scan base-package="com.jd.apps" />
+    <!-- 配置数据源 -->
+    <bean id="jdbcDataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName">
+            <value>org.gjt.mm.mysql.Driver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://localhost:3306/blog?useUnicode=true&amp;characterEncoding=UTF-8
+            </value>
+        </property>
+        <property name="username">
+            <value>zhxia</value>
+        </property>
+        <property name="password">
+            <value>123456</value>
+        </property>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="jdbcDataSource" />
+        <property name="mapperLocations" value="classpath:com/jd/apps/sqlmap/*.xml"></property>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jd.apps.dao" />
+    </bean>
+
+    <bean id="loginAction" class="com.jd.apps.web.action.LoginAction"></bean>
+    <bean id="userService" class="com.jd.apps.service.UserService"></bean>
+    <bean id="newsService" class="com.jd.apps.service.NewsService"></bean>
+</beans>

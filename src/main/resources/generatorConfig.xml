@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+<classPathEntry location="D:\software\java\apache-maven\repo\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar"/>
+  <context id="context1" >
+      <commentGenerator><property name="suppressAllComments" value="true" /></commentGenerator>
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/blog" userId="zhxia" password="123456" />
+    <javaModelGenerator targetPackage="com.jd.apps.model" targetProject="web" />
+    <sqlMapGenerator targetPackage="com.jd.apps.sqlmap" targetProject="web" />
+    <javaClientGenerator targetPackage="com.jd.apps.dao" targetProject="web" type="XMLMAPPER" />
+    <table schema="" tableName="user"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+      <columnOverride column="id" property="id" />
+    </table>
+
+    <table schema="" tableName="news"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+      <columnOverride column="id" property="id" />
+    </table>
+  </context>
+</generatorConfiguration>
